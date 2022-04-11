@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'KOTRALEAP';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/KOTRALEAP.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'LeferiPoint-WhiteObliqueA';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-WhiteObliqueA.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            /* background-image: url('./city2.jpg');
+            background-size: cover; */
+            background: url(city3.jpg);
+            background-size: cover;
+        }
+
+        h1 {
+            display: inline;
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #alltime {
+            text-align: center;
+            margin: 350px;
+        }
+
+        /* #hourmin {
+            font-family: 'KOTRALEAP';
+        } */
+
+        /* #second {
+            font-family: 'LeferiPoint-WhiteObliqueA';
+        }
+        #yearday {
+            font-family: 'LeferiPoint-WhiteObliqueA';
+        } */
+    </style>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="alltime">
+            <div id="timebox">
+                <h1 id="hourmin" style="color:white; font-size: 130px;"></h1>
+                <h1 id="second" style="color:white; font-size: 55px;"></h1>
+            </div>
+            <div id="calen">
+                <h1 id="yearday" style="color:white; font-size: 30px;"></h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        var changetime = document.getElementById("hourmin");
+        var changesecond = document.getElementById('second');
+        var changeday = document.getElementById('yearday');
+        var day = ["일", "월", "화", "수", "목", "금", "토"];
+        function change() {
+            var time = new Date();
+            var nowtime = String(time.getHours()).padStart(2, '0') + ":" + String(time.getMinutes()).padStart(2, '0');
+            var nowsecond = String(time.getSeconds()).padStart(2, '0');
+            var nowday = String(time.getFullYear()) + "년 " + String(time.getMonth() + 1) + "월 " + String(time.getDate()) + "일 " + day[time.getDay()] + "요일";
+
+            changetime.innerHTML = nowtime;
+            changesecond.innerHTML = nowsecond;
+            changeday.innerHTML = nowday;
+        }
+        change();
+        setInterval(change, 1000);
+    </script>
+</body>
+
+</html>
